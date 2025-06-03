@@ -1,0 +1,575 @@
+select: campo de coverter de 
+input: valor 
+
+HTML
+1.Começamos adicionando a imagem no index
+2.Criar tag main (será meu conteúdo principal)
+3.Dentro dela terá as tags: label, select e option
+4.Duplico minhas 3 tags: label, select e option, p/ colocar todas as opções de moedas.
+5.Adiciono a Label do input
+6.Adiciono botão de converter
+7.Adiciono uma caixa de: section e div
+8.Dentro coloco a imagem da bandeira brasileira
+9.Duplico e mudo a imagem para a moeda dos USA
+
+CSS
+1.Zerar margin,padding. Add: box-sizing:border-box; Add:family da fonte
+2.Add body: background-color "esse só muda a cor de fundo" diferente do background que alem disso faz outras alterações.
+3.Alterações/ADD na Caixa: Main"Frame no figma": width 
+4.ADD do width/height da imagem (NO HTML CRIO UMA CLASS P/ IMG)
+5.ADD label informações
+6.ADD select informações
+7.ADD a tag input ao lado do select, para pegar as mesma informações
+8.ADD button
+9.ADD button:hover e button:active
+10.ADD informações da section "Q É UMA BORDA COM FORMATO DE CAIXA"
+11.ADD class: currency-box nas duas divs (no HTML) dps ADD no CSS
+12.ADD class: arrow para a img (no HTML) dps ADD no CSS
+13.ADD class: currency para o p (no HTML) dps ADD no CSS
+14.ADD class: currency-value para o p (no HTML) dps ADD no CSS
+15.ADD class: img-real e img dolar para as imagens (no HTML) dps ADD no CSS
+
+JAVA SCRIPT
+Microtarefas, resolva problema por problema, até finalizar a aplicação/projeto,
+sempre se certifique-se se cada passo está sendo corretamente executado, 
+antes de continuar.
+
+Lógica: Quando clicar no botão irá: 
+
+1.captar quado o botão é clicado 
+2.chamar a função 
+3.pegar o valor do input
+4.fazer a conta
+5.colocar o valor em real e dólar
+6.formatar esses valores
+
+1.me certifiquei se o html estava vinculado ao js
+
+console.log("funcionou?")
+
+2.mapiei meu botão: No index: Com a Class
+
+<button class="convert-button">Converter</button>
+
+2.mapiei meu botão: No JS:
+
+const convertButton = document.querySelector(".convert-button")
+
+console.log(convertButton)
+
+3.pegar o click do botão: Chamando um ouvinte de evento: Essa função será
+chamada quando eu clicar no botão:
+
+convertButton.addEventListener("click", convertValues)
+
+4.chamar a função para converter os valores:
+
+function ConvertValues(){
+    console.log("Funcionou?")
+}
+
+5.pegar o valor do input "valor": No index: Add a Class:
+
+<input class="input-currency" placeholder="R$ 10.000,00">
+
+5.pegar o valor do input "valor": No JS: Add a minha Função:
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    console.log(inputCurrencyValue)
+}
+
+6.pegar o valor do input e dividir pelo valor do dólar do dia:
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const dolarToday = 5.2
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    console.log(convertedValue)
+}
+
+7.Colocar o valor a converter e o valor convertido à baixo das suas respectivas
+bandeiras: No html : Add a Class para diferenciar os dois valores
+
+<p class="currency-value-to-convert">R$ 0,00</p>
+<p class="currency-value">US$ 0,00</p>
+
+7.Colocar o valor a converter e o valor convertido à baixo das suas respectivas
+bandeiras: No Css : Add a Class para aplicar o mesmo Css as duas Class
+
+.currency-value, .currency-value-to-convert{
+    color: #555555;
+    font-weight: 700px;
+    font-size:20px;
+}
+
+7.Colocar o valor a converter à baixo da sua respectiva
+bandeira: No JS : Mapear "valor em real que é o valor a ser convertido"
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+
+    const dolarToday = 5.2
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    currencyValueToConvert.innerHTML = inputCurrencyValue 
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+
+    console.log(convertedValue)
+}
+
+7.Colocar o valor convertido à baixo da sua respectiva
+bandeira: No JS : Mapear "valor em dolar que é o valor que foi convertido"
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+
+    const dolarToday = 5.2
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    currencyValueToConvert.innerHTML = inputCurrencyValue 
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+
+    currencyValueToConverted.innerHTML = convertedValue
+
+    console.log(convertedValue)
+}
+
+8. Colocar Valor do Real em formato monetário
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+
+    const dolarToday = 5.2
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style:"currency", //O QUE SERÁ?
+    currency:"BRL" //QUAL MOEDA?
+    }).format(inputCurrencyValue)
+    
+    /*FERRAMENTA DO JS PARA FORMATAR NUMEROS ETC
+    new Intl.NumberFormat
+    ("pt-BR") "IDIOMA DO TEXTO" FORMATO A SER CONVERTIDO
+    COLOCAR ALGUMAS CONFIGURAÇÕES:
+     style:"currency"" O QUE SERÁ?
+     currency QUAL MOEDA?
+     .format() QUEM SERÁ FORMATADO? "O VALOR QUE O USUARIO DIGITAR"
+    */
+    
+    currencyValueToConverted.innerHTML = convertedValue
+
+    console.log(convertedValue)
+}
+
+9. Colocar Valor do dólar em formato monetário
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+
+    const dolarToday = 5.2
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style:"currency", //O QUE SERÁ?
+    currency:"BRL" //QUAL MOEDA?
+    }).format(inputCurrencyValue)
+    //QUEM SERÁ FORMATADO? ESTA DENTRO DOS() "O VALOR QUE O USUARIO DIGITAR"
+    
+    currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {//IDIOMA E PAÍS
+style:"currency",
+currency: "USD"
+    }).format(convertedValue)
+
+}
+
+10. Converter para Euro ou Dólar: Mapear o botão select no JS: 
+Add Class no index: e add o value para não haver problema no JS
+<select class="currency-select"></select>
+<option value="dolar">US$ Dólar americano</option>
+<option value="euro">€ Euro</option>
+
+10. Converter para Euro ou Dólar: Mapear o botão select no JS:
+
+const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues(){
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    /*ESTANDO DENTRO DA FUNÇÃO, TODA VEZ QUE CLICO NO BOTÃO EU CHAMO A FUNÇÃO
+    QUANDO CHAMO A FUNÇÃO CONSIGO VER SE MEU SELECT ESTAR SENDO CHAMADO*/
+    console.log(currencySelect.value)//POIS QUERO APENAS O VALOR DO SELECT
+    const dolarToday = 5.2
+    const euroToday = 6.2
+    /*PRECISAMOS DECIDIR ENTRE EURO OU DÓLAR QUANDO APERTARMOS NO BOTÃO
+    PRECISO IR ATÉ O MEU SELECT P DESCOBRIR QUAL VALOR QUE ESTA NO MEU SELECT
+    PARA CONSEGUIRMOS TOMAR A DECISÃO ENTRE DÓLAR E EURO
+    */
+
+    const convertedValue = inputCurrencyValue / dolarToday
+
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+    style:"currency", //O QUE SERÁ?
+    currency:"BRL" //QUAL MOEDA?
+    }).format(inputCurrencyValue)
+    //QUEM SERÁ FORMATADO? ESTA DENTRO DOS() "O VALOR QUE O USUARIO DIGITAR"
+    
+    currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {//IDIOMA E PAÍS
+style:"currency",
+currency: "USD"
+    }).format(convertedValue)
+
+}
+
+convertButton.addEventListener("click", convertValues) 
+//QUANDO O BOTAO FOR CLICADO, ESSA LINHA CHAMARÁ A FUNÇÃO ACIMA: convertValues()
+
+11.Utilizar o if no JS
+
+const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues() {
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    const dolarToday = 5.2
+    const euroToday = 6.2
+
+
+
+/*QUANDO EU CLICAR NO MEU BOTÃO, IREI VERIFICAR O MEU currencySelect.value
+SE MEU currencySelect.value FOR IGUAL A DOLAR TOMAREI UMA AÇÃO E SE FOR 
+IGUAL A EURO TOMAREI OUTRA AÇÃO*/ 
+if(currencySelect.value == "dolar"){
+    currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+    }).format(inputCurrencyValue / dolarToday)
+}
+
+if(currencySelect.value == "euro"){
+    currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+        style: "currency",
+        currency: "EUR"
+    }).format(inputCurrencyValue / euroToday)
+}
+
+    //TROCAR TEXTO: P/ O VALOR QUE O USUARIO DIGITOU (VALOR A SER CONVERTIDO)
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency", //O QUE SERÁ?
+        currency: "BRL" //QUAL MOEDA?
+    }).format(inputCurrencyValue)
+    //QUEM SERÁ FORMATADO? ESTA DENTRO DOS() "O VALOR QUE O USUARIO DIGITAR"
+
+}
+
+convertButton.addEventListener("click", convertValues)
+//QUANDO O BOTAO FOR CLICADO, ESSA LINHA CHAMARÁ A FUNÇÃO ACIMA: convertValues()
+
+12.Quando mudar meu select quero que mude o nome da moeda:
+usando o change no JS. No index ADD O id:
+
+<p class="currency" id="currency-name">Dólar americano</p>
+
+12.Quando mudar meu select quero que mude o nome da moeda:
+usando o change no JS: Primeiro testei se a minha função foi chamada:
+
+/*TODA VEZ QUE EU TROCAR O MEU "CURRENCY" DE MOEDA" ESSA FUNÇÃO SERÁ CHAMADA */
+function changeCurrency(){
+console.log("trocou de moeda")
+}
+
+12.Quando mudar meu select quero que mude o nome da moeda:
+usando o change no JS:
+
+const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues() {
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    const dolarToday = 5.2
+    const euroToday = 6.2
+
+
+    if (currencySelect.value == "dolar") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue / dolarToday)
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue / euroToday)
+    }
+
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).format(inputCurrencyValue)
+
+
+}
+/*TODA VEZ QUE EU TROCAR O MEU "CURRENCY" DE MOEDA" ESSA FUNÇÃO SERÁ CHAMADA */
+function changeCurrency() {
+    const currencyName = document.getElementById("currenry-name") /*MAPEEI O ELEMENTO*/
+
+
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR DÓLAR, ELE ESCREVÁ DÓLAR AMERICANO */
+    if (currencySelect.value == "dolar") { 
+    currencyName.innerHTML = "Dólar americano" //INNERHTML MUDA O TEXTO
+    /*PRECISO SABER QUANDO ESTOU TROCANDO P DOLAR OU P EURO P SABER QUAL NOME EU COLOCO*/
+    
+}
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR EURO, ELE ESCREVÁ EURO */
+    if (currencySelect.value == "euro") { 
+    currencyName.innerHTML = "Euro"
+}
+}
+
+/*TODA VEZ QUE O SELECT TROCAR DE VALOR CHAMO A FUNÇÃO CHANGE*/
+currencySelect.addEventListener("change", changeCurrency)
+convertButton.addEventListener("click", convertValues)
+
+13.Quando mudar meu select quero que mude a imagem da moeda:
+usando o change no JS: No index Add a Class na imagem:
+
+<img class="currency-img" src="./assets/Dolar.png" alt="logo-moeda-convertida">
+
+13.Quando mudar meu select quero que mude a imagem da moeda:
+usando o change no JS:
+
+const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues() {
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    const dolarToday = 5.2
+    const euroToday = 6.2
+
+
+    if (currencySelect.value == "dolar") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue / dolarToday)
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue / euroToday)
+    }
+
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).format(inputCurrencyValue)
+
+
+}
+/*TODA VEZ QUE EU TROCAR O MEU "CURRENCY" DE MOEDA" ESSA FUNÇÃO SERÁ CHAMADA */
+function changeCurrency() {
+    const currencyName = document.getElementById("currency-name") /*MAPEEI O ELEMENTO*/
+    const currencyImage = document.querySelector(".currency-img")
+/*IRÁ MUDAR APENAS O SRC DA IMAGEM */
+
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR DÓLAR, ELE ESCREVÁ DÓLAR AMERICANO */
+    if (currencySelect.value == "dolar") { 
+    currencyName.innerHTML = "Dólar americano" //INNERHTML MUDA O TEXTO
+    /*PRECISO SABER QUANDO ESTOU TROCANDO P DOLAR OU P EURO P SABER QUAL NOME EU COLOCO*/
+    currencyImage.src="./assets/Dolar.png"
+    
+}
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR EURO, ELE ESCREVÁ EURO */
+    if (currencySelect.value == "euro") { 
+    currencyName.innerHTML = "Euro"
+    currencyImage.src="./assets/Euro.png"
+}
+}
+
+/*TODA VEZ QUE O SELECT TROCAR DE VALOR CHAMO A FUNÇÃO CHANGE*/
+currencySelect.addEventListener("change", changeCurrency)
+convertButton.addEventListener("click", convertValues)const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues() {
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    const dolarToday = 5.2
+    const euroToday = 6.2
+
+
+    if (currencySelect.value == "dolar") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue / dolarToday)
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue / euroToday)
+    }
+
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).format(inputCurrencyValue)
+
+
+}
+/*TODA VEZ QUE EU TROCAR O MEU "CURRENCY" DE MOEDA" ESSA FUNÇÃO SERÁ CHAMADA */
+function changeCurrency() {
+    const currencyName = document.getElementById("currency-name") /*MAPEEI O ELEMENTO*/
+    const currencyImage = document.querySelector(".currency-img")
+/*IRÁ MUDAR APENAS O SRC DA IMAGEM */
+
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR DÓLAR, ELE ESCREVÁ DÓLAR AMERICANO */
+    if (currencySelect.value == "dolar") { 
+    currencyName.innerHTML = "Dólar americano" //INNERHTML MUDA O TEXTO
+    /*PRECISO SABER QUANDO ESTOU TROCANDO P DOLAR OU P EURO P SABER QUAL NOME EU COLOCO*/
+    currencyImage.src="./assets/Dolar.png"
+    
+}
+    /*QUANDO EU TROCAR O VALOR DO SELECT, ELE CHAMARÁ A FUNÇÃO, SE O VALOR SELECIONADO
+    FOR EURO, ELE ESCREVÁ EURO */
+    if (currencySelect.value == "euro") { 
+    currencyName.innerHTML = "Euro"
+    currencyImage.src="./assets/Euro.png"
+}
+}
+
+/*TODA VEZ QUE O SELECT TROCAR DE VALOR CHAMO A FUNÇÃO CHANGE*/
+currencySelect.addEventListener("change", changeCurrency)
+convertButton.addEventListener("click", convertValues)
+
+
+14. Converter o valor de euro pra dolar e vise versa
+
+const convertButton = document.querySelector(".convert-button")
+const currencySelect = document.querySelector(".currency-select")
+
+function convertValues() {
+    const inputCurrencyValue = document.querySelector(".input-currency").value
+
+    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
+    const currencyValueToConverted = document.querySelector(".currency-value-to-converted")
+
+    const dolarToday = 5.2
+    const euroToday = 6.2
+
+
+    if (currencySelect.value == "dolar") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD"
+        }).format(inputCurrencyValue / dolarToday)
+    }
+
+    if (currencySelect.value == "euro") {
+        currencyValueToConverted.innerHTML = new Intl.NumberFormat("de-DE", {
+            style: "currency",
+            currency: "EUR"
+        }).format(inputCurrencyValue / euroToday)
+    }
+
+    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    }).format(inputCurrencyValue)
+
+
+}
+
+function changeCurrency() {
+    const currencyName = document.getElementById("currency-name") 
+    const currencyImage = document.querySelector(".currency-img")
+
+
+    if (currencySelect.value == "dolar") { 
+    currencyName.innerHTML = "Dólar americano" 
+    currencyImage.src="./assets/Dolar.png"
+    
+}
+    
+    if (currencySelect.value == "euro") { 
+    currencyName.innerHTML = "Euro"
+    currencyImage.src="./assets/Euro.png"
+}
+
+convertValues()
+/*POSSO CHAMAR A MINHA FUNÇÃO ASSIM
+
+DE OLHO NO MEU SELECT: TODA VEZ QUE ELE TROCAR DE VALOR, EU CHAMO A MINHA FUNÇÃO:
+PRA MUDAR IMAGEM/TEXTO. E NO FINAL EU CHAMO ESSA FUNÇÃO QUE CONVERTE VALORES:
+convertValues() E QUANDO ESSA FUNÇÃO DE TROCAR VALORES FOR CHAMADA, ELA FARÁ TUDO
+DO COMEÇO NOVAMENTE: MAPEAR QUEM É MEU INPUT, QUAL O VALOR QUE É PRA ELE CONVERTER,
+FARÁ OS CÁLCULOS, VERRIFICAR SE É DOLAR/EURO, E FORMATARÁ
+*/
+}
+
+currencySelect.addEventListener("change", changeCurrency)
+convertButton.addEventListener("click", convertValues)
+
+
+
+15. 
+1.Desafio: Adicionar novas moedas: Libra, bitcoin etc
+2.Desafio: Colocar um select com várias opções: 
+Ex: Converter de Dolar p/ Real e vise-versa
+

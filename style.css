@@ -1,0 +1,157 @@
+/* font-family: "Roboto", sans-serif; */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    outline: none; /*TIRA A LINHA AZUL EM VOLTA DA CAIXA DA LABEL*/
+}
+
+body {
+    background-color: #8A51FC;
+}
+
+.logo {
+    width: 300px;
+    /*N PRECISA COLOCAR O height,POIS ELA FAZ AUTOMATICO*/
+    display: block;
+    /*FARÁ COM QUE NOSSA IMG CENTRALIZE, APÓS ADD MARGIN:AUTO;*/
+    margin: 20px auto;
+
+}
+
+main {
+    /*CAIXA PRINCIPAL*/
+    width: 375px;
+    /*N ADD height POIS ELE IRÁ MUDAR CONFORME FORMOS ADD ELEMENTOS*/
+    border-radius: 20px;
+    /*ARREDONDAR CANTOS DO ELEMENTO*/
+    background: rgba(244, 244, 244, 1);
+
+    /*POR PADRÃO DIV,MAIN,SECTION SÃO DISPLAY-BLOCK*/
+    margin: 0 auto 40px;
+    /*ADD PADDING PQ ESTA TUDO MT GRUDADO */
+    padding: 44px 24px 23px;
+    /*CIMA/LADOS/BAIXO*/
+
+}
+
+label { /*CONVERTER DE*/
+    color: #777777;
+    font-weight: 700px;
+    font-size: 14px;
+}
+
+select,input{ /*CAIXINHA COM R$ DENTRO & CAIXINHA VALOR DE DENTRO*/ 
+    background: #FFFFFF;
+
+    border:1px solid #BBBBBB;
+    border-radius:4px;
+
+    height:48px; 
+    /*N COLOCO O WIDTH, APENAS COLOCO 100%, PQ ELE OCUPARÁ TODO O ESPAÇO DISPONÍVEL, 
+    ELE NÃO VAI ESTOURAR PQ TEM O PADDING PARA SEGURAR ELE*/
+    
+    width:100%; /*LARGURA*/
+
+    margin-bottom: 24px; /*PARA AS CAIXAS NÃO FICAREM GRUDADAS*/
+
+    appearance:none; /*SETA DO MOUSE*/
+
+    padding-left:18px; /*PARA FRASE NÃO FICAR GRUDADA COM A MARGEM ESQUERDA DA CAIXA*/
+
+    /*INFORMAÇÕES DA FONTE DAS FRASES DO SELECT(DENTRO DAS CAIXINHAS)*/
+    color: #555555;
+    width:700;
+    size:16px;
+
+    cursor:pointer;
+
+}
+
+button{
+    background: #772FD3;
+
+    height:48px;
+    width:100%;
+
+    border-radius:5px; /*BORDA/CANTOS DO BOTÃO ARREDONDADO*/
+    border:none; /*SEM BORDAS NO BOTÃO*/
+
+/*SOBRE AS PALAVRAS DE DENTRO DO BOTÃO*/
+    color:#FFFFFF;
+    font-weight:700px;
+    font-size:18px;
+    cursor: pointer;
+
+
+}
+
+button:hover{ /*QUANDO PASSO O PONTEIRO DO MOUSE EM CIMA DO BOTÃO ELE FICA OPÁCO*/
+    opacity: 0.8;
+}
+
+button:active{ /*QUANDO O BOTÃO FOR CLICADO ELE FICARÁ MAIS OPÁCO*/
+opacity:0.6;
+}
+
+section{ /*Q É UMA BORDA COM FORMATO DE CAIXA*/
+    border: 1px solid #772FD3;
+    border-radius:20px;
+
+    margin-top: 36px; /*DISTANCIA ENTRE ESSA CAIXA E O BOTÃO ACIMA*/
+    padding:12px; /*PARTE DE DENTRO DA CAIXA (ENTRE A IMAGEM E A BORDA"CAIXA"*/
+   
+    display:flex; /*POR PADRÃO DEIXA OS ÌTENS UM DO LADO DO OUTRO*/
+    /*PODE SER USADO EM DIV,SECTION,MAIN*/
+
+    flex-direction: column;/*ESCOLHO SE ELES IRÃO FICAR EM COLUNAS"column" OU LINHAS*/
+
+    align-items:center; /*SUPER PODER DO DISPLAY FLEX*/
+    /*ALINHOU TODOS OS ITENS"IMG E TEXTO AO CENTRO*/
+}
+
+.arrow-img{
+  margin:15px auto; /**/
+}
+
+.currency-box{
+    display:flex; 
+    /*TODAS ESSAS FERRAMENTAS ABAIXOS TENHO ACESSO PQ ESTOU USANDO O DISPLAY FLEX*/
+    flex-direction: column; /*UM ITEM AO LADO DO OUTRO SERIA ROW*/
+    align-items: center;
+    gap: 4px; /*TODOS OS MEUS ITENS TERÃO O MESMO DISTANCIAMENTO*/
+}
+
+.currency{ 
+    color: #777777;
+    font-size:14px;
+
+}
+
+.currency-value, .currency-value-to-convert{
+    color: #555555;
+    font-weight: 700px;
+    font-size:20px;
+}
+
+.real-img{
+    width: 50px;
+    height: 50px;
+ 
+ 
+
+}
+
+.currency-img{ /*DOLAR*/
+    width: 44px;
+    height: 44px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+
+}
+
+
+
+
