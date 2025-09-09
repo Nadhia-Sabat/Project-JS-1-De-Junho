@@ -16,9 +16,6 @@ Permite converter valores entre **Real, Dólar Americano, Euro e Libra** de form
 - **CSS3** → estilização e responsividade.  
 - **JavaScript** → lógica de conversão.  
 
-## 📂 Estrutura do projeto
-
-
 
 <img src="https://github.com/Nadhia-Sabat/Project-JS-1-De-Junho/blob/master/currency.png?raw=true">
 
