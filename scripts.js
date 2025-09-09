@@ -12,15 +12,19 @@ function convertValues() {
         real: 1,
         dolar: 5.2,
         euro: 6.2,
-        libra: 7.62
+        libra: 7.62,
+        iene: 0.039,
+        bitcoin: 567704 // Isso quer dizer: 1 Bitcoin = 567704 Reais
+    
     }
 
     const formats = { //12
         real: { locale: "pt-BR", currency: "BRL" }, //5*
         dolar: { locale: "en-US", currency: "USD" },
         euro: { locale: "de-DE", currency: "EUR" },
-        libra: { locale: "en-GB", currency: "GBP" }
-
+        libra: { locale: "en-GB", currency: "GBP" },
+        iene: { locale: "ja-JP", currency: "JPY" },
+        bitcoin: { locale: "en-US", currency: "BTC" }
     }
 
     const fromCurrency = currencySelected.value //7 6*
@@ -29,11 +33,10 @@ function convertValues() {
     const fromRate = rates[fromCurrency] //8
     const toRate = rates[toCurrency]
 
-    const realValue = inputCurrencyValue * rates[fromCurrency] //9 7*
-    const convertedValue = realValue / rates[toCurrency]
+   /* const realValue = inputCurrencyValue * rates[fromCurrency] //9 7*
+    const convertedValue = realValue / rates[toCurrency] */
 
-
-
+    const convertedValue = inputCurrencyValue * (fromRate / toRate); 
 
     currencyValueToConvert.innerHTML = new Intl.NumberFormat( 
         formats [fromCurrency].locale,{
@@ -45,8 +48,31 @@ function convertValues() {
         formats[toCurrency].locale, {
         style: "currency",
         currency: formats[toCurrency].currency
-    }).format(convertedValue) //11 2*
+    }).format(convertedValue) //11 2* 
 
+     // Formatar valor a converter (origem)
+     currencyValueToConvert.innerHTML =
+     fromCurrency === "bitcoin"
+         ? `₿${inputCurrencyValue.toFixed(8)}`
+         : new Intl.NumberFormat(
+             formats[fromCurrency].locale,
+             {
+                 style: "currency",
+                 currency: formats[fromCurrency].currency
+             }
+           ).format(inputCurrencyValue)
+
+ // Formatar valor convertido (destino)
+ currencyValueToConverted.innerHTML =
+     toCurrency === "bitcoin"
+         ? `₿${convertedValue.toFixed(8)}`
+         : new Intl.NumberFormat(
+             formats[toCurrency].locale,
+             {
+                 style: "currency",
+                 currency: formats[toCurrency].currency
+             }
+           ).format(convertedValue)
 }
 
 function changeCurrency() {
@@ -75,6 +101,15 @@ function changeCurrency() {
         currencyImage.src = "./assets/Pound.png"
     }
 
+    if (currencySelect.value == "iene") {
+        currencyName.innerHTML = "Iene"
+        currencyImage.src = "./assets/Iene.png"
+    }
+
+    if (currencySelect.value == "bitcoin") {
+        currencyName.innerHTML = "Bitcoin"
+        currencyImage.src = "./assets/Bitcoin.png"
+    }
     convertValues()
 
 
@@ -104,6 +139,16 @@ function changeCurrencySelected() { //4
     if (currencySelected.value == "libra") {
         currencyName.innerHTML = "Libra"
         currencyImage.src = "./assets/Pound.png"
+    }
+
+    if (currencySelected.value == "iene") {
+        currencyName.innerHTML = "Iene"
+        currencyImage.src = "./assets/Iene.png"
+    }
+
+    if (currencySelected.value == "bitcoin") {
+        currencyName.innerHTML = "Bitcoin"
+        currencyImage.src = "./assets/Bitcoin.png"
     }
 
     convertValues() //3
