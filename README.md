@@ -20,4 +20,5 @@ Permite converter valores entre **Real, Dólar Americano, Euro e Libra** de form
 
 
 
-<img src="https://github.com/Nadhia-Sabat/Project-JS-1-De-Junho/master/img/currency.png?raw=true">
+<img src="https://github.com/Nadhia-Sabat/Project-JS-1-De-Junho/blob/master/currency.png?raw=true">
+
