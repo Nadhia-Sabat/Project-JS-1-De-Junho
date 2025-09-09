@@ -18,4 +18,4 @@ Permite converter valores entre **Real, Dólar Americano, Euro e Libra** de form
 
 ## 📂 Estrutura do projeto
 
-<img src="https://github.com/Nadhia-Sabat/easy-shopping/blob/master/img/corrency.png?raw=true">
+<img src="https://github.com/Nadhia-Sabat/easy-shopping/blob/master/img/currency.png?raw=true">
