@@ -17,3 +17,5 @@ Permite converter valores entre **Real, Dólar Americano, Euro e Libra** de form
 - **JavaScript** → lógica de conversão.  
 
 ## 📂 Estrutura do projeto
+
+<img src="https://github.com/Nadhia-Sabat/easy-shopping/blob/master/img/corrency.png?raw=true">
